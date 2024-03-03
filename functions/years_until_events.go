@@ -23,6 +23,9 @@ func yearsUntilEvents(age int) (
 	// Naked return statement returns the named return variables
 	// This is not recommended for readability, but is used here for brevity and to demonstrate the syntax
 	return
+
+	//Above is the same as:
+	// return yearsUntilAdult, yearsUntilDrinking, yearsUntilCarRental
 }
 
 func main() {
