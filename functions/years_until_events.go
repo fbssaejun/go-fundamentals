@@ -3,8 +3,8 @@ package main
 import "fmt"
 
 func yearsUntilEvents(age int) (
-	yearsUntilAdult int,
-	yearsUntilDrinking int,
+	yearsUntilAdult,
+	yearsUntilDrinking,
 	yearsUntilCarRental int,
 ) {
 	yearsUntilAdult = 18 - age
