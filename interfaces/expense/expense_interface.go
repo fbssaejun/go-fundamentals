@@ -3,15 +3,14 @@ package main
 import "fmt"
 
 func getExpenseReport(e expense) (string, float64) {
-	email, ok := e.(email)
-	if ok {
-		return email.toAddress, email.cost()
+	switch v := e.(type) {
+	case email:
+		return v.toAddress, v.cost()
+	case sms:
+		return v.toPhoneNumber, v.cost()
+	default:
+		return "Invalid", e.cost()
 	}
-	sms, ok := e.(sms)
-	if ok {
-		return sms.toPhoneNumber, sms.cost()
-	}
-	return "", 0.0
 }
 
 type expense interface {
