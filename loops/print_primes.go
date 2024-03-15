@@ -1,28 +1,29 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func printPrimes(max int) {
-	for n := 2; n < max+1; n++ {
-		if n == 2 {
-			fmt.Println(n)
-			continue
-		}
-		if n%2 == 0 {
-			continue
-		}
-		isPrime := true
-		for i := 3; i*i < n+1; i++ {
-			if n%i == 0 {
-				isPrime = false
-				break
-			}
-		}
-		if !isPrime {
-			continue
-		}
-		fmt.Println(n)
+	if max >= 2 {
+		fmt.Println(2)
 	}
+	for n := 3; n <= max; n += 2 {
+		if isPrime(n) {
+			fmt.Println(n)
+		}
+	}
+}
+
+func isPrime(n int) bool {
+	sqrt := int(math.Sqrt(float64(n)))
+	for i := 2; i <= sqrt; i++ {
+		if n%i == 0 {
+			return false
+		}
+	}
+	return true
 }
 
 func main() {
