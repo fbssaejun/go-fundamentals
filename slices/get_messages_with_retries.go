@@ -1,6 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
+
+const (
+	planFree = "free"
+	planPro  = "pro"
+)
 
 func getMessageWithRetries(primary, secondary, tertiary string) ([3]string, [3]int, error) {
 	return [3]string{primary, secondary, tertiary}, [3]int{len(primary), len(secondary), len(tertiary)}, nil
@@ -18,6 +26,21 @@ func printMessages() {
 	}
 }
 
+func getMessageWithRetriesForPlan(plan string, messages [3]string) ([]string, error) {
+	if plan == planPro {
+		fmt.Println(messages[0:3])
+		return messages[0:3], nil
+	}
+	if plan == planFree {
+		fmt.Println(messages[0:2])
+		return messages[0:2], nil
+	}
+	fmt.Println(errors.New("unsupported plan"))
+	return nil, errors.New("unsupported plan")
+}
+
 func main() {
+	messages := [3]string{"first message", "second message", "third message"}
+	getMessageWithRetriesForPlan(planFree, messages)
 	printMessages()
 }
