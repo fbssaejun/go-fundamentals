@@ -28,8 +28,8 @@ func printMessages() {
 
 func getMessageWithRetriesForPlan(plan string, messages [3]string) ([]string, error) {
 	if plan == planPro {
-		fmt.Println(messages[0:3])
-		return messages[0:3], nil
+		fmt.Println(messages[:])
+		return messages[:], nil
 	}
 	if plan == planFree {
 		fmt.Println(messages[0:2])
@@ -41,6 +41,6 @@ func getMessageWithRetriesForPlan(plan string, messages [3]string) ([]string, er
 
 func main() {
 	messages := [3]string{"first message", "second message", "third message"}
-	getMessageWithRetriesForPlan(planFree, messages)
+	getMessageWithRetriesForPlan(planPro, messages)
 	printMessages()
 }
