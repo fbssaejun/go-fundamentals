@@ -9,8 +9,7 @@ type cost struct {
 
 func getCostsByDay(costs []cost) []float64 {
 	costsByDay := []float64{}
-	for i := 0; i < len(costs); i++ {
-		cost := costs[i]
+	for _, cost := range costs {
 		for cost.day >= len(costsByDay) {
 			costsByDay = append(costsByDay, 0.0)
 		}
