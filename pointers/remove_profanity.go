@@ -1,16 +1,21 @@
 package main
 
 import (
+	"errors"
 	"strings"
 )
 
-func removeProfanity(message *string) {
+func removeProfanity(message *string) error {
+	if message == nil {
+		return errors.New("invalid input")
+	}
 	messageVal := *message
 	messageVal = strings.ReplaceAll(messageVal, "fubb", "****")
 	messageVal = strings.ReplaceAll(messageVal, "shiz", "****")
 	messageVal = strings.ReplaceAll(messageVal, "witch", "*****")
 
 	*message = messageVal
+	return nil
 }
 
 func main() {
