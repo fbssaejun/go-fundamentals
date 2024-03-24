@@ -15,6 +15,8 @@ type user struct {
 }
 
 func logAndDelete(users map[string]user, name string) (log string) {
+	// defer is used to delete the user after the log is printed
+	// defer will run the delete function after all the logic in the function is executed
 	defer delete(users, name)
 	user, ok := users[name]
 	if !ok {
